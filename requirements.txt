@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+httpx
+pydantic
+python-multipart
+sqlite-utils
+requests
+email-validator
+python-jose
