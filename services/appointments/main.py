@@ -76,3 +76,16 @@ def book(b: BookIn, user=Depends(get_user)):
         pass
 
     return {"id": appt_id, "status": "Confirmed"}
+
+@app.get("/my")
+def my_appointments(user=Depends(get_user)):
+    cur = conn.execute("""
+                       SELECT a.id, s.slot_time, c.name, a.status
+                       FROM appointments a
+                                JOIN slots s ON s.id = a.slot_id
+                                JOIN clinicians c ON c.id = s.clinician_id
+                       WHERE a.user_id = ?
+                       """, (user,))
+    return [{"id": i, "when": w, "clinician_name": n, "status": s}
+            for (i, w, n, s) in cur.fetchall()]
+
