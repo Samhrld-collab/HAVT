@@ -18,7 +18,6 @@ SERVICES = {
     "patients": "http://localhost:8002",
     "appointments": "http://localhost:8003",
     "vitals": "http://localhost:8004",
-    "notifications": "http://localhost:8005",
 }
 
 @app.api_route("/api/{service}/{path:path}",
