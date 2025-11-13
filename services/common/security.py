@@ -3,7 +3,7 @@ from fastapi.security import HTTPBearer
 import jwt, time
 
 bearer = HTTPBearer()
-SECRET = "dev-secret"  # replace for production
+SECRET = "JwA7d823dAX"
 
 def make_token(sub: str):
     return jwt.encode({"sub": sub, "exp": int(time.time()) + 3600}, SECRET, algorithm="HS256")

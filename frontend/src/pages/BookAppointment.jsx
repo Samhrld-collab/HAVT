@@ -6,7 +6,6 @@ export default function BookAppointment({ token }) {
   const [msg, setMsg] = useState("");
 
   useEffect(() => {
-    // ✅ Just use the path; gateway prefix handled in apiFetch
     apiFetch("/appointments/slots", {}, token).then(setSlots);
   }, [token]);
 

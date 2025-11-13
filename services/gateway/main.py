@@ -4,12 +4,11 @@ import httpx
 
 app = FastAPI(title="HAVT API Gateway")
 
-# CORS: allow your Vite dev server
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # or ["*"] during dev
+    allow_origins=["http://localhost:5173"],
     allow_credentials=True,
-    allow_methods=["*"],  # GET, POST, PUT, DELETE, OPTIONS, etc.
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
@@ -23,7 +22,6 @@ SERVICES = {
 @app.api_route("/api/{service}/{path:path}",
                methods=["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"])
 async def gateway(service: str, path: str, request: Request):
-    # Let CORSMiddleware handle preflight automatically
     if request.method == "OPTIONS":
         return Response(status_code=200)
 

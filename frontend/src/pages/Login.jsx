@@ -7,7 +7,6 @@ export default function Login({ onLogin }) {
   const [message, setMessage] = useState("");
 
   const handleLogin = async () => {
-    // ✅ Frontend email validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setMessage("Please enter a valid email address.");
       return;
@@ -40,7 +39,7 @@ export default function Login({ onLogin }) {
     <div style={{ padding: 20 }}>
       <h2>Login / Register</h2>
       <input
-        type="email" // ✅ built-in HTML5 email check
+        type="email"
         placeholder="Email"
         onChange={(e) => setEmail(e.target.value)}
       /><br />
